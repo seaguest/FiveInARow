@@ -1,8 +1,7 @@
+package com.seaguest.game.searchengine;
+
 import com.seaguest.game.chessboard.Point;
 import com.seaguest.game.player.IPlayer;
-import com.seaguest.game.searchengine.MoveAndScore;
-import com.seaguest.game.searchengine.QuickSort;
-import com.seaguest.game.searchengine.SearchEngine;
 
 import org.junit.Test;
 
@@ -10,9 +9,67 @@ import org.junit.Test;
  * Created by tyhk1987 on 2015/7/18.
  */
 
-public class MiniMaxTest {
+public class MiniTest {
 
     @Test
+    public void testMinimax1() {
+
+        int[][] array = {
+                {0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 1, 2, 0, 0, 0},
+                {0, 0, 1, 0, 0, 0, 0},
+                {0, 2, 0, 1, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0},
+                {0, 2, 0, 0, 0, 1, 0},
+                {0, 0, 0, 0, 0, 0, 0},
+        };
+
+        SearchEngine board = new SearchEngine(array);
+        board.displayBoard();
+        board.searchBestMove();
+
+        System.out.println("----------------------");
+        MoveAndScore bestMove = board.getBestMove();
+        board.makeMove(bestMove, IPlayer.WHITE);
+        board.displayBoard();
+
+
+        System.out.println("bestMove is:" + bestMove.position.x + "-" + bestMove.position.y);
+    }
+
+    //@Test
+    public void testMinimax3() {
+
+        int[][] array = {
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        };
+        SearchEngine board = new SearchEngine(array);
+        board.displayBoard();
+        board.searchBestMove();
+
+        System.out.println("----------------------");
+        MoveAndScore bestMove = board.getBestMove();
+        board.makeMove(bestMove, IPlayer.WHITE);
+        board.displayBoard();
+
+
+        System.out.println("bestMove is:" + bestMove.position.x + "-" + bestMove.position.y);
+    }
+
+
+//    @Test
     public void testQuickSort() {
         MoveAndScore[] moves = new MoveAndScore[10];
         moves[0] = new MoveAndScore(10, new Point(-1, -1));
@@ -35,32 +92,6 @@ public class MiniMaxTest {
             System.out.println("Score:" + move.score);
         }
 
-    }
-
-    @Test
-    public void testMinimax1() {
-
-        int[][] array = {
-                {0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 2, 0, 0, 0, 0},
-                {0, 0, 2, 0, 0, 0, 0},
-                {0, 0, 2, 0, 0, 0, 0},
-                {0, 0, 0, 1, 1, 0, 0},
-                {0, 0, 0, 0, 0, 1, 0},
-                {0, 0, 0, 0, 0, 0, 0},
-        };
-
-        SearchEngine board = new SearchEngine(array);
-        board.displayBoard();
-        board.searchBestMove();
-
-        System.out.println("----------------------");
-        MoveAndScore bestMove = board.bestMoveAndScore;
-        board.makeMove(bestMove, IPlayer.X);
-        board.displayBoard();
-
-
-        System.out.println("bestMove is:" + bestMove.position.x + "-" + bestMove.position.y);
     }
 
 //    @Test
