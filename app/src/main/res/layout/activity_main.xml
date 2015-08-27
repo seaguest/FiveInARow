@@ -14,16 +14,21 @@
     <RelativeLayout
         android:id="@+id/head"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp">
 
         <ImageButton
             android:id="@+id/player1Avatar"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_column="0"
             android:layout_row="0"
             android:scaleType="fitXY"
-            android:src="@mipmap/a1" />
+            android:src="@mipmap/a1"
+            android:layout_marginStart="21dp"
+            android:layout_alignTop="@+id/player1Name"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:id="@+id/player1Name"
@@ -41,50 +46,42 @@
 
         <ImageView
             android:id="@+id/player1Color"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-
-            android:layout_alignBottom="@+id/settingButton"
-            android:layout_centerHorizontal="true"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_column="4"
             android:layout_gravity="bottom"
             android:layout_row="0"
             android:scaleType="fitXY"
-            android:src="@mipmap/white" />
+            android:src="@mipmap/white"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
 
         <ImageButton
             android:id="@+id/settingButton"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_column="6"
-            android:layout_marginEnd="12dp"
             android:layout_row="0"
             android:background="@null"
             android:scaleType="fitXY"
-            android:src="@mipmap/setting" />
-
+            android:src="@mipmap/setting"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="18dp" />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
+        android:layout_marginTop="30dp"
         android:layout_weight="1"
-        android:background="@mipmap/b2"
         android:orientation="horizontal"
         android:scaleType="fitCenter">
 
-        <com.seaguest.game.chessboard.ChessBoard
+        <com.seaguest.game.chessboard.ChessBoardView
             android:id="@+id/chessboard"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="15dp"
             android:background="@mipmap/b5"
             android:scaleType="fitCenter"
             android:textColor="#FFFFFF" />
@@ -94,70 +91,68 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp">
 
         <ImageButton
             android:id="@+id/startButton"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_column="3"
-
             android:layout_marginStart="13dp"
             android:layout_row="0"
-
             android:background="@null"
-            android:onClick="newGame"
             android:scaleType="fitXY"
             android:src="@mipmap/start" />
 
         <ImageButton
             android:id="@+id/player2Avatar"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/startButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_column="7"
             android:layout_gravity="right|center_vertical"
             android:layout_row="0"
             android:layout_x="258dp"
             android:layout_y="0dp"
             android:scaleType="fitXY"
-            android:src="@mipmap/a2" />
+            android:src="@mipmap/a2"
+            android:layout_marginEnd="22dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
 
         <TextView
             android:id="@+id/player2Name"
             android:layout_width="142dp"
             android:layout_height="43dp"
-            android:layout_centerVertical="true"
             android:layout_column="6"
             android:layout_gravity="center"
             android:layout_row="0"
-            android:layout_toStartOf="@+id/player2Avatar"
             android:layout_x="109dp"
             android:layout_y="11dp"
             android:gravity="right"
             android:lines="2"
             android:maxLength="20"
             android:maxLines="2"
-            android:text="spider \n Level 1" />
+            android:text="spider \n Level 1"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/player2Avatar" />
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignBottom="@+id/startButton"
-            android:layout_centerHorizontal="true"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_column="4"
             android:layout_gravity="center_horizontal|bottom"
             android:layout_row="0"
             android:layout_x="214dp"
             android:layout_y="63dp"
             android:scaleType="fitXY"
-            android:src="@mipmap/black" />
-
-
+            android:src="@mipmap/black"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
 

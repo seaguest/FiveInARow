@@ -47,12 +47,13 @@ public class MoveGenerator {
 
         movesListAndScore[nPlay][moveCount].position = new Point(topI, topJ);
         moveCount++;
+        /*
         switch (chessBoardSize) {
             case 7:
                 movesListAndScore[nPlay][moveCount].score = Evaluator.posValue7[topI][topJ];
                 break;
             case 11:
-                movesListAndScore[nPlay][moveCount].score = Evaluator.posValue13[topI][topJ];
+                movesListAndScore[nPlay][moveCount].score = Evaluator.posValue11[topI][topJ];
                 break;
             case 13:
                 movesListAndScore[nPlay][moveCount].score = Evaluator.posValue13[topI][topJ];
@@ -66,7 +67,7 @@ public class MoveGenerator {
 
             default:
                 break;
-        }
+        }*/
 
         return moveCount;
     }

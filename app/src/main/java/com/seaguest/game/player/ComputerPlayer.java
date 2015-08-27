@@ -1,27 +1,27 @@
 package com.seaguest.game.player;
 
-import android.content.Intent;
-
-import com.seaguest.game.chessboard.ChessBoard;
+import com.seaguest.game.chessboard.Configuration;
 import com.seaguest.game.searchengine.SearchEngine;
 
-
 public class ComputerPlayer implements IPlayer {
+    public boolean isX = true;
 
-    int color = IPlayer.NONE;
+    public int chessmanColor;
 
-    public ChessBoard chessboard;
+    public int winState = 2;
+
     public SearchEngine searchEngine;
+    Configuration setting;
 
-    public ComputerPlayer(ChessBoard chessboard, int color) {
-        this.chessboard = chessboard;
-        this.color = color;
-        searchEngine = new SearchEngine(chessboard.getSearchEngineBoard());
+    public ComputerPlayer(int color, int maxDepth) {
+        this.chessmanColor = color;
+        this.setting = setting;
+        searchEngine = new SearchEngine(this, maxDepth);
     }
 
     @Override
     public boolean isX() {
-        return true;
+        return isX;
     }
 
     @Override
@@ -30,12 +30,23 @@ public class ComputerPlayer implements IPlayer {
     }
 
     @Override
-    public int canIWin() {
-        return 0;
+    public boolean hasIWon() {
+        return this.winState == IPlayer.WIN;
     }
 
     @Override
-    public boolean sendMessage(Intent message) {
-        return false;
+    public int getWinstate() {
+        return this.winState;
     }
+
+    @Override
+    public int getChessmanColor() {
+        return chessmanColor;
+    }
+
+    @Override
+    public void setWinState(int winstate) {
+        this.winState = winstate;
+    }
+
 }

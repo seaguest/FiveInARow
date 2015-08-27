@@ -1,45 +1,60 @@
 package com.seaguest.game.player;
 
-import android.content.Intent;
-
 import com.seaguest.game.chessboard.ChessBoard;
+import com.seaguest.game.chessboard.Chessman;
+import com.seaguest.game.chessboard.Configuration;
 
-public class Player implements IPlayer{
-	public ChessBoard chessboard;
-	public int myChessmanColor;
+public class Player implements IPlayer {
+    public boolean isX = false;
+    public int chessmanColor;
+    public int winState = 2;
 
-	public int winState = 2;
+    public ChessBoard chessboard;
+    public Configuration setting;
 
-	public Player(ChessBoard c, int color) {
-		chessboard = c;
-		myChessmanColor = color;
-	}
+    public Player(int color, ChessBoard chessboard) {
+        chessmanColor = color;
+        this.chessboard = chessboard;
+        setting = new Configuration();
+    }
 
-	@Override
-	public boolean isX() {
-		return false;
-	}
+    @Override
+    public boolean isX() {
+        return isX;
+    }
 
-	@Override
-	public boolean play() {
-		return true;
-	}
-	
- 	@Override
-	public boolean sendMessage(Intent message){return false;}
+    @Override
+    public void moveChessman(Chessman chessman) {
+        chessboard.placeChessman(chessman);
+    }
 
- 	@Override
-	/*
-	 * return 胜1 还未胜-1 和0
-	 */
-	public int canIWin() {
-		int totalChessmanInTheory = chessboard.chessBoardSize*chessboard.chessBoardSize;
+    @Override
+    public int getWinstate() {
+        return this.winState;
+    }
 
-		if (chessboard.onBoardChessman.size()
-				== totalChessmanInTheory) {
-			return 0;
-		}
-		//return chessboard.isWin(myChessmanColor);
-		return 1;
-	}
+    @Override
+    public int getChessmanColor() {
+        return chessmanColor;
+    }
+
+    @Override
+    public void setWinState(int winstate) {
+        this.winState = winstate;
+    }
+
+
+    public void quit(){}
+
+    public void askForDraw(){}
+
+    public void giveup(){}
+
+    public void undo(){
+        chessboard.undoLastStep(this);
+    }
+
+
+
+
 }

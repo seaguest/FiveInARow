@@ -1,10 +1,10 @@
+import com.seaguest.game.chessboard.Chessman;
+import com.seaguest.game.chessboard.Configuration;
 import com.seaguest.game.chessboard.Point;
+import com.seaguest.game.player.ComputerPlayer;
 import com.seaguest.game.player.IPlayer;
 import com.seaguest.game.searchengine.MoveAndScore;
 import com.seaguest.game.searchengine.QuickSort;
-import com.seaguest.game.searchengine.SearchEngine;
-
-import org.junit.Test;
 
 /**
  * Created by tyhk1987 on 2015/7/18.
@@ -12,7 +12,7 @@ import org.junit.Test;
 
 public class MiniMaxTest {
 
-    @Test
+    //@Test
     public void testQuickSort() {
         MoveAndScore[] moves = new MoveAndScore[10];
         moves[0] = new MoveAndScore(10, new Point(-1, -1));
@@ -37,10 +37,10 @@ public class MiniMaxTest {
 
     }
 
-    @Test
+    //@Test
     public void testMinimax1() {
 
-        int[][] array = {
+        int[][] board9 = {
                 {0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 2, 0, 0, 0, 0},
                 {0, 0, 2, 0, 0, 0, 0},
@@ -50,22 +50,22 @@ public class MiniMaxTest {
                 {0, 0, 0, 0, 0, 0, 0},
         };
 
-        SearchEngine board = new SearchEngine(array);
-        board.displayBoard();
-        board.searchBestMove();
-
+        ComputerPlayer ai = new ComputerPlayer(IPlayer.BLACK, 2);
+        ai.searchEngine.setBoard(board9);
+        ai.searchEngine.displayBoard();
+        ai.searchEngine.searchBestMove();
         System.out.println("----------------------");
-        MoveAndScore bestMove = board.bestMoveAndScore;
-        board.makeMove(bestMove, IPlayer.X);
-        board.displayBoard();
-
+        MoveAndScore bestMove = ai.searchEngine.getBestMove();
+        Chessman chessmanToMove = new Chessman(bestMove.position.x, bestMove.position.y, IPlayer.BLACK);
+        ai.searchEngine.makeMove(chessmanToMove);
+        ai.searchEngine.displayBoard();
 
         System.out.println("bestMove is:" + bestMove.position.x + "-" + bestMove.position.y);
     }
 
 //    @Test
     public void testMinimax2() {
-        int[][] array = {
+        int[][] board9 = {
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
@@ -81,17 +81,22 @@ public class MiniMaxTest {
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,}
         };
 
-        SearchEngine board = new SearchEngine(array);
-        board.displayBoard();
-        board.searchBestMove();
+        Configuration setting = new Configuration();
+        ComputerPlayer ai = new ComputerPlayer(IPlayer.BLACK, 2);
+        ai.searchEngine.setBoard(board9);
+
+        ai.searchEngine.displayBoard();
+
+        ai.searchEngine.searchBestMove();
 
         System.out.println("----------------------");
-        MoveAndScore bestMove = board.bestMoveAndScore;
-        board.makeMove(bestMove, IPlayer.X);
-        board.displayBoard();
-
+        MoveAndScore bestMove = ai.searchEngine.getBestMove();
+        Chessman chessmanToMove = new Chessman(bestMove.position.x, bestMove.position.y, IPlayer.BLACK);
+        ai.searchEngine.makeMove(chessmanToMove);
+        ai.searchEngine.displayBoard();
 
         System.out.println("bestMove is:" + bestMove.position.x + "-" + bestMove.position.y);
+
 
     }
 
